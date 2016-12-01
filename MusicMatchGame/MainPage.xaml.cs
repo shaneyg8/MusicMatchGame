@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicMatchGame.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -28,6 +29,8 @@ namespace MusicMatchGame
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private ObservableCollection<Song> Songs;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -44,6 +47,9 @@ namespace MusicMatchGame
             // This will choose random songs from your music library so it won't play one 
             // after another after another because then the game would be a lot more simple
             var randomSongs = await PickRandomSongs(allSongs);
+
+            // This takes the data from the songs
+            await PopulateSongList(randomSongs);
 
         }
 
@@ -97,7 +103,37 @@ namespace MusicMatchGame
             return ranSongs;
         }
 
-        
+        private async Task PopulateSongList(List<StorageFile> files)
+        {
+            int id = 0;
+
+            foreach (var file in files)
+            {
+                MusicProperties songProperties = await file.Properties.GetMusicPropertiesAsync();
+
+                StorageItemThumbnail currentThumb = await file.GetThumbnailAsync(
+                    ThumbnailMode.MusicView,
+                    200,
+                    ThumbnailOptions.UseCurrentScale);
+
+                var albumCover = new BitmapImage();
+                albumCover.SetSource(currentThumb);
+
+                var song = new Song();
+                song.Id = id;
+                song.Title = songProperties.Title;
+                song.Artist = songProperties.Artist;
+                song.Album = songProperties.Album;
+                song.AlbumCover = albumCover;
+                song.SongFile = file;
+
+                Songs.Add(song);
+                id++;
+            }
+
+        }
+
+
 
     }
 }
