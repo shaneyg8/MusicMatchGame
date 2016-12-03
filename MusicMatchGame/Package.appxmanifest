@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="899df5df-d6b2-40a1-ab4b-c7e7dc0942ac" Publisher="CN=SHANE" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="899df5df-d6b2-40a1-ab4b-c7e7dc0942ac" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="15c88f31-f9ed-488e-9f2a-58aec10f77aa" Publisher="CN=SHANE" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="15c88f31-f9ed-488e-9f2a-58aec10f77aa" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>MusicMatchGame</DisplayName>
     <PublisherDisplayName>SHANE</PublisherDisplayName>
