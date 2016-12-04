@@ -33,8 +33,8 @@ namespace MusicMatchGame
         private ObservableCollection<Song> Songs;
         private ObservableCollection<StorageFile> AllSongs;
 
-        bool _playingMusic = false;
-        int _round = 0;
+        bool playmusic = false;
+        int round = 0;
 
         public MainPage()
         {
@@ -44,7 +44,7 @@ namespace MusicMatchGame
         }
 
        
-        private async Task RetrieveFilesInFolders(
+        private async Task GetAllFiles(
             ObservableCollection<StorageFile> list,
             StorageFolder parent)
         {
@@ -56,20 +56,20 @@ namespace MusicMatchGame
 
             foreach (var item in await parent.GetFoldersAsync())
             {
-                await RetrieveFilesInFolders(list, item);
+                await GetAllFiles(list, item);
             }
         }
 
         private async Task<List<StorageFile>> PickRandomSongs(ObservableCollection<StorageFile> allSongs)
         {
-            Random random = new Random();
+            Random ran = new Random();
             var songCount = allSongs.Count;
 
             var randomSongs = new List<StorageFile>();
 
             while (randomSongs.Count < 10)
             {
-                var randomNumber = random.Next(songCount);
+                var randomNumber = ran.Next(songCount);
                 var randomSong = allSongs[randomNumber];
 
 
@@ -125,9 +125,9 @@ namespace MusicMatchGame
 
         private void SongGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-           //Users Selection
+            //Users Selection
 
-            _round++;
+            round++;
             StartCooldown();
         }
 
@@ -136,7 +136,7 @@ namespace MusicMatchGame
             // This will get access to your Music Library
             StorageFolder folder = KnownFolders.MusicLibrary;
             var allSongs = new ObservableCollection<StorageFile>();
-            await RetrieveFilesInFolders(allSongs, folder);
+            await GetAllFiles(allSongs, folder);
             return allSongs;
         }
 
@@ -167,48 +167,58 @@ namespace MusicMatchGame
 
         private void StartCooldown()
         {
-            _playingMusic = false;
+            playmusic = false;
             SolidColorBrush brush = new SolidColorBrush(Colors.Blue);
             MyProgressBar.Foreground = brush;
-            InstructionTextBlock.Text = string.Format("Get ready for round {0} ...", _round + 1);
+            InstructionTextBlock.Text = string.Format("Please prepare for round {0} ...", round + 1);
             InstructionTextBlock.Foreground = brush;
             CountDown.Begin();
         }
 
-        private void StartCountdown()
+        private void CountdownStr()
         {
-            _playingMusic = true;
-            SolidColorBrush brush = new SolidColorBrush(Colors.Red);
+            playmusic = true;
+            SolidColorBrush brush = new SolidColorBrush(Colors.Green);
             MyProgressBar.Foreground = brush;
-            InstructionTextBlock.Text = "GO!";
+            InstructionTextBlock.Text = "GO GO GO!";
             InstructionTextBlock.Foreground = brush;
             CountDown.Begin();
         }
 
-        private async void CountDown_Completed(object sender, object e)
+        private async void CountdownFinished(object sender, object e)
         {
-            if (!_playingMusic)
+            if (!playmusic)
             {
                 // Music Starts Playing
-                var song = PickSong();
+                var song = ChooseSong();
 
                 MyMediaElement.SetSource(
                     await song.SongFile.OpenAsync(FileAccessMode.Read),
                     song.SongFile.ContentType);
 
                 // Start countdown
-                StartCountdown();
+                CountdownStr();
             }
         }
 
-        private Song PickSong()
+        private void PlayAgainButton_Click(object sender, RoutedEventArgs e)
         {
-            Random random = new Random();
-            var unusedSongs = Songs.Where(p => p.Used == false);
-            var randomNumber = random.Next(unusedSongs.Count());
-            var randomSong = unusedSongs.ElementAt(randomNumber);
-            randomSong.Selected = true;
-            return randomSong;
+
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private Song ChooseSong()
+        {
+            Random ran = new Random();
+            var SongsNotUsed = Songs.Where(p => p.Used == false);
+            var ranNumber = ran.Next(SongsNotUsed.Count());
+            var ranSong = SongsNotUsed.ElementAt(ranNumber);
+            ranSong.Selected = true;
+            return ranSong;
         }
 
     }

@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Storyboard x:Name="CountDown" Completed="CountDown_Completed">
+        <Storyboard x:Name="CountDown" Completed="CountdownFinished">
             <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" 
                                            Storyboard.TargetName="MyProgressBar" 
                                            Storyboard.TargetProperty="(RangeBase.Value)">
