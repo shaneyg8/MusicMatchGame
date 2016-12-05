@@ -28,6 +28,7 @@ namespace MusicMatchGame
     
     public sealed partial class MainPage : Page
     {
+        //Generic Dynamic Data Collection
         private ObservableCollection<Song> Songs;
         private ObservableCollection<StorageFile> AllSongs;
 
@@ -42,7 +43,8 @@ namespace MusicMatchGame
             Songs = new ObservableCollection<Song>();
         }
 
-       
+       // Getting all .mp3 files from your Music Library
+       //Music Library Capability must be added
         private async Task GetAllFiles(
             ObservableCollection<StorageFile> list,
             StorageFolder parent)
@@ -58,6 +60,8 @@ namespace MusicMatchGame
                 await GetAllFiles(list, item);
             }
         }
+
+        //Picking Random songs instead of picking songs the same order each time
 
         private async Task<List<StorageFile>> PickRandomSongs(ObservableCollection<StorageFile> allSongs)
         {
@@ -107,7 +111,7 @@ namespace MusicMatchGame
 
                 var albumCover = new BitmapImage();
                 albumCover.SetSource(currentThumb);
-
+                //Getting Songs and their data .. Xaml Get and Set
                 var song = new Song();
                 song.Id = id;
                 song.Title = songProperties.Title;
@@ -134,7 +138,8 @@ namespace MusicMatchGame
             var correctSong = Songs.FirstOrDefault(p => p.Selected == true);
 
             // Correct and Incorrect answers
-
+            // Produces the png pictures once right or wrong answers are clicked 
+            // A URI is used to indentify a resource in this case it is getting the images from the assets folder
             Uri uri;
             int score;
             if (clickedSong.Selected)
@@ -154,7 +159,7 @@ namespace MusicMatchGame
 
             totalScore += score;
             round++;
-
+            //Output of scores , Correct song, Album and so on...
             ResultTextBlock.Text = string.Format("Score: {0} Total Score after {1} Rounds: {2}", score, round, totalScore);
             TitleTextBlock.Text = String.Format("Correct Song: {0}", correctSong.Title);
             ArtistTextBlock.Text = string.Format("Performed by: {0}", correctSong.Artist);
@@ -167,6 +172,8 @@ namespace MusicMatchGame
 
             if (round >= 5)
             {
+                //Once game is over it will produce this message
+                //Play Again button will also appear
                 InstructionTextBlock.Text = string.Format("Game over ... You scored: {0}", totalScore);
                 PlayAgainButton.Visibility = Visibility.Visible;
             }
@@ -197,8 +204,8 @@ namespace MusicMatchGame
 
             StartCooldown();
 
-            // State management
-            InstructionTextBlock.Text = "Get ready ...";
+            // This will appear after play again is clicked
+            InstructionTextBlock.Text = "Please Get ready ...";
             ResultTextBlock.Text = "";
             TitleTextBlock.Text = "";
             ArtistTextBlock.Text = "";
@@ -206,7 +213,7 @@ namespace MusicMatchGame
 
             totalScore = 0;
             round = 0;
-
+            // Everything above will then be set back to 0
         }
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -221,16 +228,18 @@ namespace MusicMatchGame
             StartCooldown();
         }
 
+        //Bar on top of the page
         private void StartCooldown()
         {
             playmusic = false;
-            SolidColorBrush brush = new SolidColorBrush(Colors.Blue);
+            SolidColorBrush brush = new SolidColorBrush(Colors.Red);
             MyProgressBar.Foreground = brush;
             InstructionTextBlock.Text = string.Format("Please prepare for round {0} ...", round + 1);
             InstructionTextBlock.Foreground = brush;
             CountDown.Begin();
         }
 
+        //Once preperation is done you're then timed to guess song
         private void CountdownStr()
         {
             playmusic = true;
@@ -257,6 +266,7 @@ namespace MusicMatchGame
             }
         }
 
+        //After game is over you're given the play again option
         private async void PlayAgainButton_Click(object sender, RoutedEventArgs e)
         {
             await PrepareNewGame();
@@ -264,6 +274,7 @@ namespace MusicMatchGame
             PlayAgainButton.Visibility = Visibility.Collapsed;
         }
 
+        //Exiting the application if you want to quit the game
         private void buttonclick(object sender, RoutedEventArgs e)
         {
             Application.Current.Exit();
@@ -274,6 +285,7 @@ namespace MusicMatchGame
 
         }
 
+        //Choosing songs at random
         private Song ChooseSong()
         {
             Random ran = new Random();

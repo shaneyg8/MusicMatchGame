@@ -26,12 +26,12 @@ namespace MusicMatchGame
         {
             this.InitializeComponent();
         }
-
+        // Navigation to HomePage
         private void buttonclick1(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
-
+        // Button to Exit Application
         private void buttonclick2(object sender, RoutedEventArgs e)
         {
             Application.Current.Exit();

@@ -10,6 +10,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <!-- Timer for when you start the bar on top-->
         <Storyboard x:Name="CountDown" Completed="CountdownFinished">
             <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" 
                                            Storyboard.TargetName="MyProgressBar" 
@@ -53,6 +54,7 @@
                                    Height="75" 
                                    Width="75" 
                                    Source="{x:Bind AlbumCover}" />
+                            <!-- X:Bind getting value AlbumCover from data source same with songs up above -->
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>
