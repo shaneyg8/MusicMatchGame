@@ -75,7 +75,7 @@ Buttons are used for Page navigation and can be seen on the home page which is t
 I wanted to make something that also used capabilities and accessing the Music Library was one of them.
 
 ## References
-## [Bob Taber - channel 9 and msdn UWP Series](https://channel9.msdn.com/Series/Windows-10-development-for-absolute-beginners/UWP-001-Series-Introduction)
+## [Bob Tabor - channel 9 and msdn UWP Series](https://channel9.msdn.com/Series/Windows-10-development-for-absolute-beginners/UWP-001-Series-Introduction)
 
 ## [Navigation](https://msdn.microsoft.com/en-us/library/windows/apps/ff626521(v=vs.105).aspx)
 
