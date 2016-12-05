@@ -55,9 +55,14 @@ Buttons are used for Page navigation and can be seen on the home page which is t
 I wanted to make something that also used capabilities and accessing the Music Library was one of them.
 
 ## References
-[Bob Taber - channel 9 and msdn UWP Series](https://channel9.msdn.com/Series/Windows-10-development-for-absolute-beginners/UWP-001-Series-Introduction)
-[Navigation](https://msdn.microsoft.com/en-us/library/windows/apps/ff626521(v=vs.105).aspx)
-[Exiting application](http://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/)
-[Page navigation 2](http://www.c-sharpcorner.com/uploadfile/2e414e/basic-navigation-between-pages-using-xaml-c-sharp-in-windows-st/)
-[Using x:Bind](https://msdn.microsoft.com/en-us/windows/uwp/xaml-platform/x-bind-markup-extension)
-[Placing Images](https://msdn.microsoft.com/en-us/library/gg680265(v=pandp.11).aspx)
+## [Bob Taber - channel 9 and msdn UWP Series](https://channel9.msdn.com/Series/Windows-10-development-for-absolute-beginners/UWP-001-Series-Introduction)
+
+## [Navigation](https://msdn.microsoft.com/en-us/library/windows/apps/ff626521(v=vs.105).aspx)
+
+## [Exiting application](http://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/)
+
+## [Page navigation 2](http://www.c-sharpcorner.com/uploadfile/2e414e/basic-navigation-between-pages-using-xaml-c-sharp-in-windows-st/)
+
+## [Using x:Bind](https://msdn.microsoft.com/en-us/windows/uwp/xaml-platform/x-bind-markup-extension)
+
+## [Placing Images](https://msdn.microsoft.com/en-us/library/gg680265(v=pandp.11).aspx)
