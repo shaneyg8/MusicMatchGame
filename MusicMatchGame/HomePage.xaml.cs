@@ -34,7 +34,7 @@ namespace MusicMatchGame
 
         private void buttonclick2(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            Application.Current.Exit();
         }
     }
 }

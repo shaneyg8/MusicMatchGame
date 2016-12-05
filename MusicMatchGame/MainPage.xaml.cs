@@ -266,6 +266,11 @@ namespace MusicMatchGame
             PlayAgainButton.Visibility = Visibility.Collapsed;
         }
 
+        private void buttonclick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
