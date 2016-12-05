@@ -35,6 +35,7 @@ namespace MusicMatchGame
 
         bool playmusic = false;
         int round = 0;
+        int totalScore = 0;
 
         public MainPage()
         {
@@ -123,12 +124,58 @@ namespace MusicMatchGame
 
         }
 
-        private void SongGridView_ItemClick(object sender, ItemClickEventArgs e)
+        private async void SongGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //Users Selection
+            // Ignore clicks when loading new song
+            if (!playmusic) return;
 
+            CountDown.Pause();
+            MyMediaElement.Stop();
+
+            var clickedSong = (Song)e.ClickedItem;
+            var correctSong = Songs.FirstOrDefault(p => p.Selected == true);
+
+            // Correct and Incorrect answers
+
+            Uri uri;
+            int score;
+            if (clickedSong.Selected)
+            {
+                uri = new Uri("ms-appx:///Assets/correct.png");
+                score = (int)MyProgressBar.Value;
+            }
+            else
+            {
+                uri = new Uri("ms-appx:///Assets/incorrect.png");
+                score = ((int)MyProgressBar.Value) * -1;
+            }
+            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            var fileStream = await file.OpenAsync(FileAccessMode.Read);
+            await clickedSong.AlbumCover.SetSourceAsync(fileStream);
+
+
+            totalScore += score;
             round++;
-            StartCooldown();
+
+            ResultTextBlock.Text = string.Format("Score: {0} Total Score after {1} Rounds: {2}", score, round, totalScore);
+            TitleTextBlock.Text = String.Format("Correct Song: {0}", correctSong.Title);
+            ArtistTextBlock.Text = string.Format("Performed by: {0}", correctSong.Artist);
+            AlbumTextBlock.Text = string.Format("On Album: {0}", correctSong.Album);
+
+            clickedSong.Used = true;
+
+            correctSong.Selected = false;
+            correctSong.Used = true;
+
+            if (round >= 5)
+            {
+                InstructionTextBlock.Text = string.Format("Game over ... You scored: {0}", totalScore);
+                PlayAgainButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                StartCooldown();
+            }
         }
 
         private async Task<ObservableCollection<StorageFile>> SetupMusicList()
@@ -144,7 +191,7 @@ namespace MusicMatchGame
         {
             Songs.Clear();
 
-            // Random Songs to be picked from your Library
+            // Random Songs to be chosen
             var randomSongs = await PickRandomSongs(AllSongs);
 
             // Getting data from selected songs
