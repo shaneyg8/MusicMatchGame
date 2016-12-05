@@ -132,15 +132,17 @@ namespace MusicMatchGame.MusicMatchGame_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[3];
-            _typeNameTable[0] = "MusicMatchGame.MainPage";
+            _typeNameTable = new string[4];
+            _typeNameTable[0] = "MusicMatchGame.HomePage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[3] = "MusicMatchGame.MainPage";
 
-            _typeTable = new global::System.Type[3];
-            _typeTable[0] = typeof(global::MusicMatchGame.MainPage);
+            _typeTable = new global::System.Type[4];
+            _typeTable[0] = typeof(global::MusicMatchGame.HomePage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[3] = typeof(global::MusicMatchGame.MainPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -175,7 +177,8 @@ namespace MusicMatchGame.MusicMatchGame_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::MusicMatchGame.MainPage(); }
+        private object Activate_0_HomePage() { return new global::MusicMatchGame.HomePage(); }
+        private object Activate_3_MainPage() { return new global::MusicMatchGame.MainPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -187,9 +190,9 @@ namespace MusicMatchGame.MusicMatchGame_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  MusicMatchGame.MainPage
+            case 0:   //  MusicMatchGame.HomePage
                 userType = new global::MusicMatchGame.MusicMatchGame_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_HomePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -200,6 +203,13 @@ namespace MusicMatchGame.MusicMatchGame_XamlTypeInfo
 
             case 2:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::MusicMatchGame.MusicMatchGame_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 3:   //  MusicMatchGame.MainPage
+                userType = new global::MusicMatchGame.MusicMatchGame_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_3_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
             }
             return xamlType;

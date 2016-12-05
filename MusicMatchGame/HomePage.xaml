@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="MusicMatchGame.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MusicMatchGame"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FFFFFBFB" BorderBrush="White">
+        <Button x:Name="button" Content="PLAY" HorizontalAlignment="Center" Margin="10,203,0,0" VerticalAlignment="Top" Width="340" Height="60" Background="#33FF0000" Click="buttonclick1"/>
+        <Button x:Name="button1" Content="QUIT" HorizontalAlignment="Center" Margin="10,313,0,0" VerticalAlignment="Top" Width="340" Height="60" Background="#33FF0404" Click="buttonclick2" />
+        <TextBox x:Name="MUSIC_MATCH_GAME" HorizontalAlignment="Center" TextAlignment="Center" FontSize="21" Margin="10,10,10,0" TextWrapping="Wrap" Text="MUSIC MATCH GAME" VerticalAlignment="Top" Width="340" Height="79" IsReadOnly="True" FlowDirection="RightToLeft" Background="#FFFDFDFA" BorderBrush="White"/>
+        <Image x:Name="image" Source="/Assets/musicsymbols.jpeg" HorizontalAlignment="Left" Height="252" Margin="10,378,0,0" VerticalAlignment="Top" Width="340" RenderTransformOrigin="0.03,0.453"/>
+
+    </Grid>
+</Page>
