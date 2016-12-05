@@ -1,6 +1,11 @@
 # MusicMatchGame
 Music Match Game C#
 
+# Shane Gleeson - G00311793
+# Mobile Applications Development 3
+# Lecturer - Martin Kenirons
+# Submission Date - 5/12/2016
+
 #Goals
 * use capabilities
 * use x:bind getting data from observable collections
