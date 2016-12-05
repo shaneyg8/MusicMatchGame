@@ -191,12 +191,23 @@ namespace MusicMatchGame
         {
             Songs.Clear();
 
-            // Random Songs to be chosen
+            // // Random Songs to be chosen
             var randomSongs = await PickRandomSongs(AllSongs);
 
             // Getting data from selected songs
             await PopulateSongList(randomSongs);
 
+            StartCooldown();
+
+            // State management
+            InstructionTextBlock.Text = "Get ready ...";
+            ResultTextBlock.Text = "";
+            TitleTextBlock.Text = "";
+            ArtistTextBlock.Text = "";
+            AlbumTextBlock.Text = "";
+
+            totalScore = 0;
+            round = 0;
 
         }
 
@@ -248,9 +259,11 @@ namespace MusicMatchGame
             }
         }
 
-        private void PlayAgainButton_Click(object sender, RoutedEventArgs e)
+        private async void PlayAgainButton_Click(object sender, RoutedEventArgs e)
         {
+            await PrepareNewGame();
 
+            PlayAgainButton.Visibility = Visibility.Collapsed;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
