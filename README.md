@@ -1,5 +1,4 @@
 # MusicMatchGame
-Music Match Game C#
 
 # Shane Gleeson - G00311793
 # Mobile Applications Development 3
