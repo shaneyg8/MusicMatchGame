@@ -54,7 +54,7 @@
                                    Height="75" 
                                    Width="75" 
                                    Source="{x:Bind AlbumCover}" />
-                            <!-- X:Bind getting value AlbumCover from data source same with songs up above -->
+                            <!-- X:Bind getting value AlbumCover from data source (Observable Collection) same with songs up above -->
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>
