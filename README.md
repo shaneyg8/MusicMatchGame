@@ -1,9 +1,9 @@
 # MusicMatchGame
 
-# Shane Gleeson - G00311793
-# Mobile Applications Development 3
-# Lecturer - Martin Kenirons
-# Submission Date - 5/12/2016
+#### Shane Gleeson - G00311793
+#### Mobile Applications Development 3
+#### Lecturer - Martin Kenirons
+#### Submission Date - 5/12/2016
 
 #Goals
 * use capabilities
