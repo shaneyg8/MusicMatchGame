@@ -12,6 +12,22 @@ Music Match Game C#
 
 * To start the game first remove everything from your music library and use the album folder given and place that in "Music". The app will read all the data in your library and process it.
 
+# **Deployment For Visual Studio 2015**
+- Download the zip file provided.
+- Open the project .sln file using Visual Studio 2015.
+- Run the project.
+
+# Issues
+Due to the mp3 files being large it sometimes takes time for the music files to load after the game is starting. That is the only issue I came about m=with my application.
+
+#Xaml Structure
+
+XAML Page | Description
+------------ | -------------
+HomePage.xaml | This is the menu of the application and where you choose to play the game.
+MainPage.xaml | This is the actual game page where the game is played. You never leave this page once you've gone past the HomePage.xaml.
+
+
 #What did i use?
 My main objecctive was to base the project off what we did in classes and what we used.
 ##X:Bind
